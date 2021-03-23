@@ -1,9 +1,13 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
+	"elo/co/lvl/zcostcalc/controller/BaseController"
+], function(BaseController, ResourceModel) {
 	"use strict";
 
-	return Controller.extend("elo.co.lvlzcostcalc.controller.App", {
+	return BaseController.extend("elo.co.lvl.zcostcalc.controller.App", {
+
+		onInit: function() {
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+		}
 
 	});
 });

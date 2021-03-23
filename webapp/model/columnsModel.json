@@ -1,0 +1,13 @@
+{
+	"cols": [
+		{
+			"label": "Matnr",
+			"template": "Matnr",
+			"width": "5rem"
+		},
+		{
+			"label": "Product Name",
+			"template": "Matnr"
+		}
+	]
+}

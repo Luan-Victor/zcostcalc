@@ -1,7 +1,7 @@
 {
 	"_version": "1.7.0",
 	"sap.app": {
-		"id": "elo.co.lvlzcostcalc",
+		"id": "elo.co.lvl.zcostcalc",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -12,9 +12,20 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"intent1": {
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					},
+					"semanticObject": "MaterialCostEstimateRun",
+					"action": "createEdit"
+				}
+			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -30,17 +41,13 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize"
-
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize", "sap_fiori_3", "sap_fiori_3_dark"]
 	},
-
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "elo.co.lvlzcostcalc.view.App",
-			"type": "XML"
+			"viewName": "elo.co.lvl.zcostcalc.view.App",
+			"type": "XML",
+			"id": "app"
 		},
 		"dependencies": {
 			"minUI5Version": "1.30.0",
@@ -62,7 +69,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "elo.co.lvlzcostcalc.i18n.i18n"
+					"bundleName": "elo.co.lvl.zcostcalc.i18n.i18n"
 				}
 			}
 		},
@@ -70,6 +77,39 @@
 			"css": [{
 				"uri": "css/style.css"
 			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "elo.co.lvl.zcostcalc.view",
+				"controlId": "app",
+				"clearTarget": false,
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "home"
+				},
+				"async": true
+			},
+			"targets": {
+				"home": {
+					"viewName": "home",
+					"viewId": "Home",
+					"viewLevel": 1
+				}
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "apphome",
+				"target": "home"
+			}]
 		}
+	},
+
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zcostcalc/webapp",
+		"_version": "1.1.0"
 	}
+
 }

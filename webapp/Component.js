@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"elo/co/lvlzcostcalc/model/models"
+	"elo/co/lvl/zcostcalc/model/models"
 ], function(UIComponent, Device, models) {
 	"use strict";
 
-	return UIComponent.extend("elo.co.lvlzcostcalc.Component", {
+	return UIComponent.extend("elo.co.lvl.zcostcalc.Component", {
 
 		metadata: {
 			manifest: "json"
@@ -22,6 +22,21 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
-		}
+			
+            // create the views based on the url/hash
+            this.getRouter().initialize();				
+		},
+		
+        getContentDensityClass: function () {
+            if (!this._sContentDensityClass) {
+                if (!Device.support.touch) {
+                    this._sContentDensityClass = "sapUiSizeCompact";
+                } else {
+                    this._sContentDensityClass = "sapUiSizeCozy";
+                }
+            }
+            return this._sContentDensityClass;
+        }	
+		
 	});
 });
