@@ -13,6 +13,16 @@
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
 		},
+		"dataSources": {
+			"ZTREINAMENTOLVLV_SRV": {
+				"uri": "/sap/opu/odata/sap/ZCOST_CALCULATION_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},		
 		"crossNavigation": {
 			"inbounds": {
 				"intent1": {
@@ -97,12 +107,22 @@
 					"viewName": "home",
 					"viewId": "Home",
 					"viewLevel": 1
+				},
+				"report": {
+					"viewId": "reportList",
+					"viewPath": "elo.co.lvl.zcostcalc.view",
+					"viewName": "Report",
+					"viewLevel": 2
 				}
 			},
 			"routes": [{
 				"pattern": "",
 				"name": "apphome",
 				"target": "home"
+			}, {
+				"pattern": "report",
+				"name": "reportList",
+				"target": "report"
 			}]
 		}
 	},
