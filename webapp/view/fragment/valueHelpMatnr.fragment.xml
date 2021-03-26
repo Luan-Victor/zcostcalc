@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+		title="{i18n>filterMatnr}"
+		ok=".onValueHelpOkPress"
+		cancel=".onValueHelpCancelPress"
+		afterClose=".onValueHelpAfterClose"
+		supportRanges="true"
+		key="Matnr"
+		descriptionKey="Maktx">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="Matnr"
+						label="{i18n>filterMatnr}"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Matnr" />
+						</fb:control>
+					</fb:FilterGroupItem>
+
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="Maktx"
+						label="{i18n>filterMaktx}"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Maktx" />
+						</fb:control>
+					</fb:FilterGroupItem>
+
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

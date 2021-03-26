@@ -29,31 +29,31 @@
 							
 							<fb:FilterGroupItem groupName="SelectOption" name="Werks" label="{i18n>filterWerks}" visibleInFilterBar="true" mandatory="true">
 								<fb:control>
-									<m:Input width="100%" id="inputWerks" showValueHelp="true" valueHelpRequest="onSearchHelpWerks"/>
+									<m:Input id="inputWerks" showValueHelp="true" valueHelpRequest=".onSearchHelpWerks"/>
 								</fb:control>
 							</fb:FilterGroupItem>							
 							
 							<fb:FilterGroupItem groupName="SelectOption" name="Klvar" label="{i18n>filterKlvar}" visibleInFilterBar="true" mandatory="true">
 								<fb:control>
-                                  <m:Input width="100%" id="inputKlvar" showValueHelp="true" valueHelpRequest="onSearchHelpKlvar"/>
+                                  <m:Input width="100%" id="inputKlvar" showValueHelp="true" valueHelpRequest=".onSearchHelpKlvar"/>
 								</fb:control>
 							</fb:FilterGroupItem>							
 
 							<fb:FilterGroupItem groupName="SelectOption" name="Amdat" label="{i18n>filterAmdat}" visibleInFilterBar="true">
 								<fb:control>
-                                  <m:Input width="100%" id="inputAmdat" showValueHelp="true" valueHelpRequest="onSearchHelpAmdat"/>
+									<m:DatePicker id="dPickerAmdat" change=".onChangeDatePicker"/>
 								</fb:control>
 							</fb:FilterGroupItem>								
 
 							<fb:FilterGroupItem groupName="SelectOption" name="Tvers" label="{i18n>filterTvers}" visibleInFilterBar="true">
 								<fb:control>
-                                  <m:Input width="100%" id="inputTvers" showValueHelp="true" valueHelpRequest="onSearchHelpTvers"/>
+                                  <m:Input id="inputTvers" maxLength="2" />
 								</fb:control>
 							</fb:FilterGroupItem>	
 
 							<fb:FilterGroupItem groupName="SelectOption" name="Matnr" label="{i18n>filterMatnr}" visibleInFilterBar="true" mandatory="true">
 								<fb:control>
-                                  <m:Input width="100%" id="inputMatnr" showValueHelp="true" valueHelpRequest="onSearchHelpMatnr"/>
+									<m:MultiInput id="inputMatnr" valueHelpOnly="true" valueHelpRequest=".onSearchHelpMatnr"/>
 								</fb:control>
 							</fb:FilterGroupItem>	
 							
@@ -76,11 +76,12 @@
 					<m:OverflowToolbar>
 						<!--<m:Title id="title" text="Products"/>-->
 						<m:ToolbarSpacer/>
-                        <m:Button icon="sap-icon://excel-attachment" press="onExport"/>
+                        <m:Button icon="sap-icon://excel-attachment" press=".onExport"/>
 					</m:OverflowToolbar>
 				</extension>
 
 				<columns>
+					
 					<Column id="__column0" width="11rem">
 						<m:Label text="{i18n>fieldKlvar}" />
 						<template>
@@ -351,6 +352,7 @@
 							<m:Text text="{Kaladat}" wrapping="false" />
 						</template>
 					</Column>
+					
 				</columns>
 			</Table>
 

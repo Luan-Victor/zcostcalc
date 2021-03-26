@@ -2,12 +2,11 @@
 	"cols": [
 		{
 			"label": "Matnr",
-			"template": "Matnr",
-			"width": "5rem"
+			"template": "Matnr"
 		},
 		{
-			"label": "Product Name",
-			"template": "Matnr"
+			"label": "Maktx",
+			"template": "Maktx"
 		}
 	]
 }

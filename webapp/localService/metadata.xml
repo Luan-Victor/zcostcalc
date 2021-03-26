@@ -1,0 +1,68 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZCOST_CALCULATION_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="calculated_cost" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Klvar" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Variante cálc.custos" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Amdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Válido em" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Tvers" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Versão cálc.custos" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Lvorm" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="MarcPElNívMand." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Descrição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PriceQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="UM preço" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Lotsize" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Tam.lot.cálCsts" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Level" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="char20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LotsizeUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unid.med.taman.lote" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="CodMaterial" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DescrCodMaterial" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Descrição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hierarquia" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemCategory" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Ctg.item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Contador" Type="Edm.Int32" sap:unicode="false" sap:label="INT4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ActivityType" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Tipo ativid." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CostCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Centro custo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Centro trabalho" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WorkCenterPlant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Quantidade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CurrencyTotalPrice" Type="Edm.Decimal" Precision="23" Scale="4" sap:unicode="false" sap:label="Preço tot.moeda ACC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CurrencyTotalValue" Type="Edm.Decimal" Precision="23" Scale="4" sap:unicode="false" sap:label="Valor tot.moeda ACC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValorUnitario" Type="Edm.Decimal" Precision="23" Scale="4" sap:unicode="false" sap:label="Valor tot.moeda ACC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PercParticipacao" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Campo de comprimento 18" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VlUnitarioParticipacao" Type="Edm.Decimal" Precision="23" Scale="4" sap:unicode="false" sap:label="Valor tot.moeda ACC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dolarizados" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Origem material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProdPai" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mtart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Tipo material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mtbez" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Descr.tp.mat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kadat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="DataCálcCustDsd" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bidat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="DataCálcCustAté" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bwdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data avaliação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aldat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data explosão" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Verid" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Versão prod." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stnum" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Lista técnica" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stlan" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Utilização" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stalt" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Alternativa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plnnr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Grupo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plnty" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Tipo de roteiro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plnal" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Numdr.grp.rot." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erfnm" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Calculado por" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Freidat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Liberado em" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kalaid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Execuç.CálCst." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kaladat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data exec.cálc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZCOST_CALCULATION_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="calculated_costSet" EntityType="ZCOST_CALCULATION_SRV.calculated_cost" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZCOST_CALCULATION_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZCOST_CALCULATION_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

@@ -10,11 +10,11 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.40.12"
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
 		},
 		"dataSources": {
-			"ZTREINAMENTOLVLV_SRV": {
+			"ZCOST_CALCULATION_SRV": {
 				"uri": "/sap/opu/odata/sap/ZCOST_CALCULATION_SRV/",
 				"type": "OData",
 				"settings": {
@@ -22,7 +22,7 @@
 					"localUri": "localService/metadata.xml"
 				}
 			}
-		},		
+		},
 		"crossNavigation": {
 			"inbounds": {
 				"intent1": {
@@ -51,7 +51,12 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_belize", "sap_fiori_3", "sap_fiori_3_dark"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize",
+			"sap_fiori_3",
+			"sap_fiori_3_dark"
+		]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -84,9 +89,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -115,21 +122,22 @@
 					"viewLevel": 2
 				}
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "apphome",
-				"target": "home"
-			}, {
-				"pattern": "report",
-				"name": "reportList",
-				"target": "report"
-			}]
+			"routes": [
+				{
+					"pattern": "",
+					"name": "apphome",
+					"target": "home"
+				},
+				{
+					"pattern": "report",
+					"name": "reportList",
+					"target": "report"
+				}
+			]
 		}
 	},
-
 	"sap.platform.abap": {
 		"uri": "/sap/bc/ui5_ui5/sap/zcostcalc/webapp",
 		"_version": "1.1.0"
 	}
-
 }
