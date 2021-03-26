@@ -41,7 +41,7 @@
 
 							<fb:FilterGroupItem groupName="SelectOption" name="Amdat" label="{i18n>filterAmdat}" visibleInFilterBar="true">
 								<fb:control>
-									<m:DatePicker id="dPickerAmdat" change=".onChangeDatePicker"/>
+									<m:DatePicker id="dPickerAmdat" />
 								</fb:control>
 							</fb:FilterGroupItem>								
 
@@ -71,7 +71,9 @@
 		</f:header>
 		
 		<f:content>	
-			<Table id="__table0" rows="{/calculated_costSet}" selectionMode="None" ariaLabelledBy="title">
+			<Table id="__table0" 
+			rows="{/calculated_costSet}"
+			                            selectionMode="None" ariaLabelledBy="title">
 				<extension>
 					<m:OverflowToolbar>
 						<!--<m:Title id="title" text="Products"/>-->

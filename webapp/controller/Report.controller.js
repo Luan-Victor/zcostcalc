@@ -71,16 +71,18 @@ sap.ui.define([
 			var inputField = this.getView().byId("inputKlvar").getValue();
 			filters.push(new sap.ui.model.Filter("Klvar", FilterOperator.EQ, inputField));
 
-			// inputField = this.getView().byId("inputAmdat").getValue();		
-			// filters.push(new sap.ui.model.Filter("Amdat", FilterOperator.EQ, inputField));  
-
+            //Corrige o campo data para DateTime - evitando erro no webservice
+			var fullDate = this.getView().byId("dPickerAmdat").getDateValue(); 
+			var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({ pattern : "yyyy-MM-ddThh:mm:ss" });
+			inputField = oDateFormat.format(fullDate);
+			if(inputField !== ""){  
+			filters.push(new sap.ui.model.Filter("Amdat", FilterOperator.EQ, inputField));  
+			}
+            
 			inputField = this.getView().byId("inputTvers").getValue();
 			if (inputField !== "") {
 				filters.push(new sap.ui.model.Filter("Tvers", FilterOperator.EQ, inputField));
 			}
-
-			inputField = this.getView().byId("inputMatnr").getValue();
-			filters.push(new sap.ui.model.Filter("Material", FilterOperator.EQ, inputField));
 
 			inputField = this.getView().byId("cboxLvorm").getSelected();
 			if (inputField !== "") {
@@ -89,6 +91,25 @@ sap.ui.define([
 
 			inputField = this.getView().byId("inputWerks").getValue();
 			filters.push(new sap.ui.model.Filter("Plant", FilterOperator.EQ, inputField));
+
+			var aTokens = this.getView().byId("inputMatnr").getTokens();
+			for (var i = 0; i < aTokens.length; i++) {
+
+				if (typeof aTokens[i].data().range !== "undefined") {
+
+					var aTokenRange = aTokens[i].data().range;
+					filters.push(new sap.ui.model.Filter(
+						"Material",
+						aTokenRange.operation,
+						aTokenRange.value1,
+						aTokenRange.value2
+					));
+
+				} else {
+					inputField = aTokens[i].getKey();
+					filters.push(new sap.ui.model.Filter("Material", FilterOperator.EQ, inputField));
+				}
+			}
 
 			return filters;
 
@@ -141,7 +162,6 @@ sap.ui.define([
 			var s = e.getParameter("selectedItem");
 			if (s) {
 				this.byId(this.inputId).setValue(s.getBindingContext().getObject().Werks);
-				this.readRefresh(e);
 			}
 			this.oDialog.destroy();
 		},
@@ -171,7 +191,6 @@ sap.ui.define([
 			var s = e.getParameter("selectedItem");
 			if (s) {
 				this.byId(this.inputId).setValue(s.getBindingContext().getObject().Klvar);
-				this.readRefresh(e);
 			}
 			this.oDialog.destroy();
 		},
@@ -316,16 +335,18 @@ sap.ui.define([
 
 					//Para cada coluna encontrada no webservice cria uma coluna para geração do excel
 					for (var j = 0; j < lengthColumns; j++) {
-						
+
 						var arrayExtension = oColumn[j].extensions;
-						var extension = arrayExtension.find( function(arrayExtension){ return arrayExtension.name === "label"; } );
+						var extension = arrayExtension.find(function(arrayExtension) {
+							return arrayExtension.name === "label";
+						});
 						var labelText = extension.value;
 						aCols.push({
 							property: oColumn[j].name,
 							type: oColumn[j].type,
 							label: labelText
 						});
-						
+
 					}
 
 				}
