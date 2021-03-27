@@ -25,11 +25,12 @@ sap.ui.define([
 			this._oMultiInput = this.getView().byId("inputMatnr");
 			this.oColModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("elo/co/lvl/zcostcalc/model") + "/columnsModel.json");
 			// this.getView().setModel(this.oDataModel);
-		},
-
-		onReset: function(oEvent) {
-			var sMessage = "onReset trigered";
-			sap.m.MessageToast.show(sMessage);
+			
+			//FilterBar
+			this.oFilterBar = null;
+			var sViewId = this.getView().getId();
+			this.oFilterBar = sap.ui.getCore().byId(sViewId + "--fBReport");
+			
 		},
 
 		// Funcionando
@@ -64,33 +65,53 @@ sap.ui.define([
 			}
 		},
 
+        onClear: function(oEvent){
+			var oItems = this.oFilterBar.getAllFilterItems(true);
+			for (var i = 0; i < oItems.length; i++) {
+				var oControl = this.oFilterBar.determineControlByFilterItem(oItems[i]);
+				if (oControl) {
+					if (oControl.getMetadata().getName() === "sap.m.CheckBox"){
+						oControl.setSelected(false);
+					}
+					else if (oControl.getMetadata().getName() === "sap.m.MultiInput"){
+					   oControl.removeAllTokens();
+					}
+					else { oControl.setValue(""); }
+				}
+			}
+        },
+
 		getScreenFilters: function() {
 
 			var filters = new Array();
 
 			var inputField = this.getView().byId("inputKlvar").getValue();
-			filters.push(new sap.ui.model.Filter("Klvar", FilterOperator.EQ, inputField));
+			if(inputField){ 
+				filters.push(new sap.ui.model.Filter("Klvar", FilterOperator.EQ, inputField));
+			}
 
             //Corrige o campo data para DateTime - evitando erro no webservice
 			var fullDate = this.getView().byId("dPickerAmdat").getDateValue(); 
 			var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({ pattern : "yyyy-MM-ddThh:mm:ss" });
+			if(fullDate){
 			inputField = oDateFormat.format(fullDate);
-			if(inputField !== ""){  
 			filters.push(new sap.ui.model.Filter("Amdat", FilterOperator.EQ, inputField));  
 			}
             
 			inputField = this.getView().byId("inputTvers").getValue();
-			if (inputField !== "") {
+			if (inputField) {
 				filters.push(new sap.ui.model.Filter("Tvers", FilterOperator.EQ, inputField));
 			}
 
 			inputField = this.getView().byId("cboxLvorm").getSelected();
-			if (inputField !== "") {
+			if (inputField) {
 				filters.push(new sap.ui.model.Filter("Lvorm", FilterOperator.EQ, inputField));
 			}
 
 			inputField = this.getView().byId("inputWerks").getValue();
-			filters.push(new sap.ui.model.Filter("Plant", FilterOperator.EQ, inputField));
+			if(inputField){ 
+				filters.push(new sap.ui.model.Filter("Plant", FilterOperator.EQ, inputField)); 
+			}
 
 			var aTokens = this.getView().byId("inputMatnr").getTokens();
 			for (var i = 0; i < aTokens.length; i++) {
@@ -116,23 +137,24 @@ sap.ui.define([
 		},
 
 		checkScreenFilters: function(filterTable) {
-
-			// for (var i = 0; i < filterTable.length; i++) {
-
-			// 	if (filterTable[i].sPath === "Plant" ||
-			// 		filterTable[i].sPath === "Material" ||
-			// 		filterTable[i].sPath === "Klvar") {
-
-			// 		if (filterTable[i].oValue1 === "") {
-			// 			sap.m.MessageToast.show("Preencher campos obrigatórios");
-			// 			return false;
-			// 		}
-			// 	}
-			// }
-
+            
+            if (!this.foundField("Plant",filterTable) ||
+                !this.foundField("Klvar",filterTable) ||
+                !this.foundField("Material",filterTable)){
+               	sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("mandatoryData"));
+            	return false; 
+            }
+            
 			return true;
 		},
-
+        
+        foundField: function(pField,pTable){
+        	for(var i = 0; i < pTable.length; i++){
+        		if (pTable[i].sPath === pField){ return true; }
+        	}
+        	return false;
+        },
+        
 		onChangeDatePicker: function(oEvent) {
 			this.oFilterBar.fireFilterChange(oEvent);
 		},

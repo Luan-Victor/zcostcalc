@@ -24,7 +24,7 @@
 			<f:DynamicPageHeader pinnable="false" >
 				<f:content>
 				
-					<fb:FilterBar clear="onClear" search="onSearch" showClearButton="true" showClearOnFB="true">
+					<fb:FilterBar id="fBReport" clear=".onClear" search=".onSearch" showClearButton="true" reset=".onClear" showClearOnFB="true">
 						<fb:filterGroupItems>
 							
 							<fb:FilterGroupItem groupName="SelectOption" name="Werks" label="{i18n>filterWerks}" visibleInFilterBar="true" mandatory="true">
