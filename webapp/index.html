@@ -9,7 +9,7 @@
 <!--src="../../resources/sap-ui-core.js"-->
 		<script id="sap-ui-bootstrap"
 			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
-			data-sap-ui-libs="sap.m"
+			data-sap-ui-libs="sap.m,sap.ui.commons,sap.ui.table"
 			data-sap-ui-theme="sap_fiori_3_dark"
 			data-sap-ui-compatVersion="edge"
 			data-sap-ui-resourceroots='{"elo.co.lvl.zcostcalc": ""}'>
@@ -18,16 +18,6 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="index.js"></script>
 
-		<script>
-			sap.ui.getCore().attachInit(function() {
-				new sap.m.Shell({
-					app: new sap.ui.core.ComponentContainer({
-						height : "100%",
-						name : "elo.co.lvl.zcostcalc"
-					})
-				}).placeAt("content");
-			});
-		</script>
 	</head>
 
 	<body class="sapUiBody sapUiSizeCozy" id="content">

@@ -6,12 +6,14 @@ sap.ui.define([
 	return BaseController.extend("elo.co.lvl.zcostcalc.controller.Home", {
 		onDisplayNotFound: function() {
 			//display the "notFound" target without changing the hash
-			this.getRouter().getTargets().display("notFound", {
-				fromTarget: "home"
-			});
+			// this.getRouter().getTargets().display("notFound", {
+			// 	fromTarget: "home"
+			// });
 		},
 		onNavToReport: function() {
-			this.getRouter().navTo("reportList");
+			this.getRouter().navTo("report");
+       	 //var loRouter = sap.ui.core.UIComponent.getRouterFor(this);
+       	 //loRouter.navTo("report");			
 		},
 		onNavToCK40N: function(oEvent) {
 			var messageBoxText = this.getView().getModel("i18n").getResourceBundle().getText("MessageBoxNavText");
@@ -49,5 +51,6 @@ sap.ui.define([
 				}
 			});
 		}
+		
 	});
 });

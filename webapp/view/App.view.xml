@@ -1,7 +1,7 @@
-<mvc:View controllerName="elo.co.lvl.zcostcalc.controller.App"  xmlns:mvc="sap.ui.core.mvc"
+<mvc:View controllerName="elo.co.lvl.zcostcalc.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true" xmlns="sap.m">
-	<Shell>
-		<!-- Limita a página e cria brdas-->
-		<App id="app"/>
-	</Shell>
+	<!--<Shell>-->
+	<App id="app">
+	</App>
+	<!--</Shell>-->
 </mvc:View>

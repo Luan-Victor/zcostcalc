@@ -51,18 +51,12 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize",
-			"sap_fiori_3",
-			"sap_fiori_3_dark"
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize", "sap_fiori_3", "sap_fiori_3_dark"]
 	},
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "elo.co.lvl.zcostcalc.view.App",
-			"type": "XML",
-			"id": "app"
+			"type": "XML"
 		},
 		"dependencies": {
 			"minUI5Version": "1.30.0",
@@ -76,6 +70,30 @@
 				"sap.uxap": {}
 			}
 		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "elo.co.lvl.zcostcalc.view",
+				"targetAggregation": "pages"
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "home",
+				"view": "Home",
+				"targetAggregation": "pages",
+				"controlId": "app"
+
+			}, {
+				"pattern": "Report",
+				"name": "report",
+				"view": "Report",
+				"targetAggregation": "pages",
+				"controlId": "app"
+			}]
+		},
+
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
@@ -89,53 +107,12 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
-		},
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"viewPath": "elo.co.lvl.zcostcalc.view",
-				"controlId": "app",
-				"clearTarget": false,
-				"controlAggregation": "pages",
-				"transition": "slide",
-				"bypassed": {
-					"target": "home"
-				},
-				"async": true
-			},
-			"targets": {
-				"home": {
-					"viewName": "home",
-					"viewId": "Home",
-					"viewLevel": 1
-				},
-				"report": {
-					"viewId": "reportList",
-					"viewPath": "elo.co.lvl.zcostcalc.view",
-					"viewName": "Report",
-					"viewLevel": 2
-				}
-			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "apphome",
-					"target": "home"
-				},
-				{
-					"pattern": "report",
-					"name": "reportList",
-					"target": "report"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		}
 	},
+
 	"sap.platform.abap": {
 		"uri": "/sap/bc/ui5_ui5/sap/zcostcalc/webapp",
 		"_version": "1.1.0"

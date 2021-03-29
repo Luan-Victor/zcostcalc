@@ -25,12 +25,31 @@ sap.ui.define([
 			this._oMultiInput = this.getView().byId("inputMatnr");
 			this.oColModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("elo/co/lvl/zcostcalc/model") + "/columnsModel.json");
 			// this.getView().setModel(this.oDataModel);
-			
+
 			//FilterBar
 			this.oFilterBar = null;
 			var sViewId = this.getView().getId();
 			this.oFilterBar = sap.ui.getCore().byId(sViewId + "--fBReport");
-			
+
+			//Create Table Columns
+			var aCols = this.createColumnConfig();
+			var oTable = this.getView().byId("__table0");
+			if (aCols) {
+				for (var i = 0; i < aCols.length; i++) {
+
+					oTable.addColumn(new sap.ui.table.Column({
+						label: new sap.ui.commons.Label({
+							text: aCols[i].label
+						}),
+						template: new sap.ui.commons.TextView({
+							text: "{" + aCols[i].property + "}"
+						}),
+						sortProperty: aCols[i].property
+							// filterProperty: aCols[i].property  
+					}));
+				}
+			}
+
 		},
 
 		// Funcionando
@@ -65,39 +84,41 @@ sap.ui.define([
 			}
 		},
 
-        onClear: function(oEvent){
+		onClear: function(oEvent) {
 			var oItems = this.oFilterBar.getAllFilterItems(true);
 			for (var i = 0; i < oItems.length; i++) {
 				var oControl = this.oFilterBar.determineControlByFilterItem(oItems[i]);
 				if (oControl) {
-					if (oControl.getMetadata().getName() === "sap.m.CheckBox"){
+					if (oControl.getMetadata().getName() === "sap.m.CheckBox") {
 						oControl.setSelected(false);
+					} else if (oControl.getMetadata().getName() === "sap.m.MultiInput") {
+						oControl.removeAllTokens();
+					} else {
+						oControl.setValue("");
 					}
-					else if (oControl.getMetadata().getName() === "sap.m.MultiInput"){
-					   oControl.removeAllTokens();
-					}
-					else { oControl.setValue(""); }
 				}
 			}
-        },
+		},
 
 		getScreenFilters: function() {
 
 			var filters = new Array();
 
 			var inputField = this.getView().byId("inputKlvar").getValue();
-			if(inputField){ 
+			if (inputField) {
 				filters.push(new sap.ui.model.Filter("Klvar", FilterOperator.EQ, inputField));
 			}
 
-            //Corrige o campo data para DateTime - evitando erro no webservice
-			var fullDate = this.getView().byId("dPickerAmdat").getDateValue(); 
-			var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({ pattern : "yyyy-MM-ddThh:mm:ss" });
-			if(fullDate){
-			inputField = oDateFormat.format(fullDate);
-			filters.push(new sap.ui.model.Filter("Amdat", FilterOperator.EQ, inputField));  
+			//Corrige o campo data para DateTime - evitando erro no webservice
+			var fullDate = this.getView().byId("dPickerAmdat").getDateValue();
+			var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
+				pattern: "yyyy-MM-ddThh:mm:ss"
+			});
+			if (fullDate) {
+				inputField = oDateFormat.format(fullDate);
+				filters.push(new sap.ui.model.Filter("Amdat", FilterOperator.EQ, inputField));
 			}
-            
+
 			inputField = this.getView().byId("inputTvers").getValue();
 			if (inputField) {
 				filters.push(new sap.ui.model.Filter("Tvers", FilterOperator.EQ, inputField));
@@ -109,8 +130,8 @@ sap.ui.define([
 			}
 
 			inputField = this.getView().byId("inputWerks").getValue();
-			if(inputField){ 
-				filters.push(new sap.ui.model.Filter("Plant", FilterOperator.EQ, inputField)); 
+			if (inputField) {
+				filters.push(new sap.ui.model.Filter("Plant", FilterOperator.EQ, inputField));
 			}
 
 			var aTokens = this.getView().byId("inputMatnr").getTokens();
@@ -137,24 +158,26 @@ sap.ui.define([
 		},
 
 		checkScreenFilters: function(filterTable) {
-            
-            if (!this.foundField("Plant",filterTable) ||
-                !this.foundField("Klvar",filterTable) ||
-                !this.foundField("Material",filterTable)){
-               	sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("mandatoryData"));
-            	return false; 
-            }
-            
+
+			if (!this.foundField("Plant", filterTable) ||
+				!this.foundField("Klvar", filterTable) ||
+				!this.foundField("Material", filterTable)) {
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("mandatoryData"));
+				return false;
+			}
+
 			return true;
 		},
-        
-        foundField: function(pField,pTable){
-        	for(var i = 0; i < pTable.length; i++){
-        		if (pTable[i].sPath === pField){ return true; }
-        	}
-        	return false;
-        },
-        
+
+		foundField: function(pField, pTable) {
+			for (var i = 0; i < pTable.length; i++) {
+				if (pTable[i].sPath === pField) {
+					return true;
+				}
+			}
+			return false;
+		},
+
 		onChangeDatePicker: function(oEvent) {
 			this.oFilterBar.fireFilterChange(oEvent);
 		},

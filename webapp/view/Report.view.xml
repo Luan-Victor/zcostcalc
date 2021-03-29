@@ -10,7 +10,7 @@
 		xmlns:f="sap.f"
 		xmlns:fb="sap.ui.comp.filterbar"
 		xmlns:vm="sap.ui.comp.variants">
-	
+
 	<f:DynamicPage id="reportListPage" class="sapUiResponsiveContentPadding" headerExpanded="{/headerExpanded}">
 		<f:title>
 			<f:DynamicPageTitle>
@@ -73,7 +73,8 @@
 		<f:content>	
 			<Table id="__table0" 
 			rows="{/calculated_costSet}"
-			                            selectionMode="None" ariaLabelledBy="title">
+			selectionMode="None" 
+			ariaLabelledBy="title">
 				<extension>
 					<m:OverflowToolbar>
 						<!--<m:Title id="title" text="Products"/>-->
@@ -82,280 +83,280 @@
 					</m:OverflowToolbar>
 				</extension>
 
-				<columns>
+				<!--<columns>-->
 					
-					<Column id="__column0" width="11rem">
-						<m:Label text="{i18n>fieldKlvar}" />
-						<template>
-							<m:Text text="{Klvar}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column1" width="11rem">
-						<m:Label text="{i18n>fieldAmdat}" />
-						<template>
-							<m:Text text="{Amdat}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column2" width="11rem">
-						<m:Label text="{i18n>fieldTvers}" />
-						<template>
-							<m:Text text="{Tvers}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column3" width="11rem">
-						<m:Label text="{i18n>fieldMaterial}" />
-						<template>
-							<m:Text text="{Material}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column4" width="11rem">
-						<m:Label text="{i18n>fieldLvorm}" />
-						<template>
-							<m:Text text="{Lvorm}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column5" width="11rem">
-						<m:Label text="{i18n>fieldDescription}" />
-						<template>
-							<m:Text text="{Description}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column6" width="11rem">
-						<m:Label text="{i18n>fieldPriceQuantityUnit}" />
-						<template>
-							<m:Text text="{PriceQuantityUnit}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column7" width="11rem">
-						<m:Label text="{i18n>fieldLotsize}" />
-						<template>
-							<m:Text text="{Lotsize}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column8" width="11rem">
-						<m:Label text="{i18n>fieldLevel}" />
-						<template>
-							<m:Text text="{Level}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column9" width="11rem">
-						<m:Label text="{i18n>fieldPlant}" />
-						<template>
-							<m:Text text="{Plant}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column10" width="11rem">
-						<m:Label text="{i18n>fieldLotsizeUnit}" />
-						<template>
-							<m:Text text="{LotsizeUnit}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column11" width="11rem">
-						<m:Label text="{i18n>fieldCodMaterial}" />
-						<template>
-							<m:Text text="{CodMaterial}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column12" width="11rem">
-						<m:Label text="{i18n>fieldDescrCodMaterial}" />
-						<template>
-							<m:Text text="{DescrCodMaterial}" wrapping="false" />
-						</template>
-					</Column>					
-					<Column id="__column13" width="11rem">
-						<m:Label text="{i18n>fieldHierarquia}" />
-						<template>
-							<m:Text text="{Hierarquia}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column14" width="11rem">
-						<m:Label text="{i18n>fieldItemCategory}" />
-						<template>
-							<m:Text text="{ItemCategory}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column15" width="11rem">
-						<m:Label text="{i18n>fieldContador}" />
-						<template>
-							<m:Text text="{Contador}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column16" width="11rem">
-						<m:Label text="{i18n>fieldActivityType}" />
-						<template>
-							<m:Text text="{ActivityType}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column17" width="11rem">
-						<m:Label text="{i18n>fieldCostCenter}" />
-						<template>
-							<m:Text text="{CostCenter}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column18" width="11rem">
-						<m:Label text="{i18n>fieldWorkCenter}" />
-						<template>
-							<m:Text text="{WorkCenter}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column19" width="11rem">
-						<m:Label text="{i18n>fieldWorkCenterPlant}" />
-						<template>
-							<m:Text text="{WorkCenterPlant}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column20" width="11rem">
-						<m:Label text="{i18n>fieldQuantity}" />
-						<template>
-							<m:Text text="{Quantity}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column21" width="11rem">
-						<m:Label text="{i18n>fieldCurrencyTotalPrice}" />
-						<template>
-							<m:Text text="{CurrencyTotalPrice}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column22" width="11rem">
-						<m:Label text="{i18n>fieldCurrencyTotalValue}" />
-						<template>
-							<m:Text text="{CurrencyTotalValue}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column23" width="11rem">
-						<m:Label text="{i18n>fieldValorUnitario}" />
-						<template>
-							<m:Text text="{ValorUnitario}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column24" width="11rem">
-						<m:Label text="{i18n>fieldPercParticipacao}" />
-						<template>
-							<m:Text text="{PercParticipacao}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column25" width="11rem">
-						<m:Label text="{i18n>fieldVlUnitarioParticipacao}" />
-						<template>
-							<m:Text text="{VlUnitarioParticipacao}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column26" width="11rem">
-						<m:Label text="{i18n>fieldDolarizados}" />
-						<template>
-							<m:Text text="{Dolarizados}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column27" width="11rem">
-						<m:Label text="{i18n>fieldProdPai}" />
-						<template>
-							<m:Text text="{ProdPai}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column28" width="11rem">
-						<m:Label text="{i18n>fieldMtart}" />
-						<template>
-							<m:Text text="{Mtart}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column29" width="11rem">
-						<m:Label text="{i18n>fieldMtbez}" />
-						<template>
-							<m:Text text="{Mtbez}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column30" width="11rem">
-						<m:Label text="{i18n>fieldKadat}" />
-						<template>
-							<m:Text text="{Kadat}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column31" width="11rem">
-						<m:Label text="{i18n>fieldBidat}" />
-						<template>
-							<m:Text text="{Bidat}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column32" width="11rem">
-						<m:Label text="{i18n>fieldBwdat}" />
-						<template>
-							<m:Text text="{Bwdat}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column33" width="11rem">
-						<m:Label text="{i18n>fieldAldat}" />
-						<template>
-							<m:Text text="{Aldat}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column34" width="11rem">
-						<m:Label text="{i18n>fieldVerid}" />
-						<template>
-							<m:Text text="{Verid}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column35" width="11rem">
-						<m:Label text="{i18n>fieldStnum}" />
-						<template>
-							<m:Text text="{Stnum}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column36" width="11rem">
-						<m:Label text="{i18n>fieldStlan}" />
-						<template>
-							<m:Text text="{Stlan}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column37" width="11rem">
-						<m:Label text="{i18n>fieldStalt}" />
-						<template>
-							<m:Text text="{Stalt}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column38" width="11rem">
-						<m:Label text="{i18n>fieldPlnnr}" />
-						<template>
-							<m:Text text="{Plnnr}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column39" width="11rem">
-						<m:Label text="{i18n>fieldPlnty}" />
-						<template>
-							<m:Text text="{Plnty}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column40" width="11rem">
-						<m:Label text="{i18n>fieldPlnal}" />
-						<template>
-							<m:Text text="{Plnal}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column41" width="11rem">
-						<m:Label text="{i18n>fieldErfnm}" />
-						<template>
-							<m:Text text="{Erfnm}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column42" width="11rem">
-						<m:Label text="{i18n>fieldFreidat}" />
-						<template>
-							<m:Text text="{Freidat}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column43" width="11rem">
-						<m:Label text="{i18n>fieldKalaid}" />
-						<template>
-							<m:Text text="{Kalaid}" wrapping="false" />
-						</template>
-					</Column>
-					<Column id="__column44" width="11rem">
-						<m:Label text="{i18n>fieldKaladat}" />
-						<template>
-							<m:Text text="{Kaladat}" wrapping="false" />
-						</template>
-					</Column>
+				<!--	<Column id="__column0" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldKlvar}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Klvar}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column1" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldAmdat}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Amdat}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column2" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldTvers}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Tvers}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column3" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldMaterial}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Material}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column4" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldLvorm}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Lvorm}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column5" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldDescription}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Description}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column6" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldPriceQuantityUnit}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{PriceQuantityUnit}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column7" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldLotsize}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Lotsize}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column8" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldLevel}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Level}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column9" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldPlant}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Plant}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column10" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldLotsizeUnit}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{LotsizeUnit}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column11" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldCodMaterial}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{CodMaterial}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column12" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldDescrCodMaterial}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{DescrCodMaterial}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>					-->
+				<!--	<Column id="__column13" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldHierarquia}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Hierarquia}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column14" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldItemCategory}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{ItemCategory}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column15" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldContador}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Contador}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column16" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldActivityType}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{ActivityType}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column17" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldCostCenter}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{CostCenter}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column18" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldWorkCenter}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{WorkCenter}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column19" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldWorkCenterPlant}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{WorkCenterPlant}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column20" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldQuantity}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Quantity}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column21" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldCurrencyTotalPrice}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{CurrencyTotalPrice}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column22" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldCurrencyTotalValue}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{CurrencyTotalValue}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column23" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldValorUnitario}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{ValorUnitario}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column24" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldPercParticipacao}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{PercParticipacao}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column25" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldVlUnitarioParticipacao}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{VlUnitarioParticipacao}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column26" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldDolarizados}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Dolarizados}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column27" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldProdPai}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{ProdPai}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column28" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldMtart}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Mtart}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column29" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldMtbez}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Mtbez}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column30" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldKadat}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Kadat}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column31" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldBidat}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Bidat}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column32" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldBwdat}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Bwdat}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column33" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldAldat}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Aldat}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column34" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldVerid}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Verid}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column35" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldStnum}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Stnum}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column36" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldStlan}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Stlan}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column37" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldStalt}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Stalt}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column38" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldPlnnr}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Plnnr}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column39" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldPlnty}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Plnty}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column40" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldPlnal}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Plnal}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column41" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldErfnm}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Erfnm}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column42" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldFreidat}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Freidat}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column43" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldKalaid}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Kalaid}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
+				<!--	<Column id="__column44" width="11rem">-->
+				<!--		<m:Label text="{i18n>fieldKaladat}" />-->
+				<!--		<template>-->
+				<!--			<m:Text text="{Kaladat}" wrapping="false" />-->
+				<!--		</template>-->
+				<!--	</Column>-->
 					
-				</columns>
+				<!--</columns>-->
 			</Table>
 
 		</f:content>

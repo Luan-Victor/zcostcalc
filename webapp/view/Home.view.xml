@@ -1,31 +1,35 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="elo.co.lvl.zcostcalc.controller.Home"
 	displayBlock="true">
-	<Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding">
-		<content>
-			<VBox class="sapUiSmallMargin">
-				<FlexBox alignItems="Center" justifyContent="Center">
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tile1}" subheader="{i18n>tile1Info}"
-						press="onNavToRegister">
-						<TileContent footer="{i18n>step1}">
-							<ImageContent src="sap-icon://list"/>
-						</TileContent>
-					</GenericTile>
-					<core:Icon src="sap-icon://feeder-arrow" decorative="true" class="sizeicon"/>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tile2}" subheader="{i18n>tile2Info}"
-						press="onNavToCK40N">
-						<TileContent footer="{i18n>step2}">
-							<ImageContent src="sap-icon://create"/>
-						</TileContent>
-					</GenericTile>
-					<core:Icon src="sap-icon://feeder-arrow" decorative="true" class="sizeicon"/>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tile3}" subheader="{i18n>tile3Info}"
-						press="onNavToReport">
-						<TileContent footer="{i18n>step3}">
-							<ImageContent src="sap-icon://task"/>
-						</TileContent>
-					</GenericTile>
-				</FlexBox>
-			</VBox>
-		</content>
-	</Page>
+	<App>
+		<pages>
+			<Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<FlexBox alignItems="Center" justifyContent="Center">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tile1}" subheader="{i18n>tile1Info}"
+								press="onNavToRegister">
+								<TileContent footer="{i18n>step1}">
+									<ImageContent src="sap-icon://list"/>
+								</TileContent>
+							</GenericTile>
+							<core:Icon src="sap-icon://feeder-arrow" decorative="true" class="sizeicon"/>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tile2}" subheader="{i18n>tile2Info}"
+								press="onNavToCK40N">
+								<TileContent footer="{i18n>step2}">
+									<ImageContent src="sap-icon://create"/>
+								</TileContent>
+							</GenericTile>
+							<core:Icon src="sap-icon://feeder-arrow" decorative="true" class="sizeicon"/>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tile3}" subheader="{i18n>tile3Info}"
+								press="onNavToReport">
+								<TileContent footer="{i18n>step3}">
+									<ImageContent src="sap-icon://task"/>
+								</TileContent>
+							</GenericTile>
+						</FlexBox>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
 </mvc:View>
