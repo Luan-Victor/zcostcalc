@@ -44,7 +44,10 @@ sap.ui.define([
 						template: new sap.ui.commons.TextView({
 							text: "{" + aCols[i].property + "}"
 						}),
-						sortProperty: aCols[i].property
+						sortProperty: aCols[i].property,
+						autoResizable: true,
+						resizable: true,
+						width : "auto"
 							// filterProperty: aCols[i].property  
 					}));
 				}
@@ -70,13 +73,25 @@ sap.ui.define([
 			if (this.checkScreenFilters(filters)) {
 
 				// Chama o serviço passando  filtros
-				var sServiceUrl = "/sap/opu/odata/sap/ZCOST_CALCULATION_SRV";
-				var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl);
+				// var sServiceUrl = "/sap/opu/odata/sap/ZCOST_CALCULATION_SRV";
+				// var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl);
 				var that = this;
+				var oModel = sap.ui.getCore().getModel();
+				// oModel.read("/calculated_costSet", {
 				oModel.read("/calculated_costSet", {
 					filters: filters,
 					success: function(oData, oResponse) {
-						that.getView().byId("__table0").setModel(oModel);
+						// that.getView().byId("__table0").setModel(oModel);
+						var oTable = that.getView().byId("__table0");
+						oTable.setModel(oModel);
+						var aColumns = oTable.getColumns();
+						for (var i = 0; i < aColumns.length; i++) {
+							// oTable.autoResizeColumn(oColumns[i].getId());
+							
+							aColumns[i].setWidth("100px");
+							// oTable.autoResizeColumn(i);
+						}
+
 					},
 					error: function(oError) {}
 				});

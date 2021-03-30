@@ -72,6 +72,7 @@
 		
 		<f:content>	
 			<Table id="__table0" 
+			class="sapUiSizeCondensed"
 			rows="{/calculated_costSet}"
 			selectionMode="None" 
 			ariaLabelledBy="title">
