@@ -11,7 +11,7 @@
 		xmlns:fb="sap.ui.comp.filterbar"
 		xmlns:vm="sap.ui.comp.variants">
 
-	<f:DynamicPage id="reportListPage" class="sapUiResponsiveContentPadding" headerExpanded="{/headerExpanded}">
+	<f:DynamicPage id="reportListPage" class="sapUiResponsiveContentPadding" headerExpanded="{/headerExpanded}" showFooter="true">
 		<f:title>
 			<f:DynamicPageTitle>
 				<f:heading>
@@ -73,14 +73,14 @@
 		<f:content>	
 			<Table id="__table0" 
 			class="sapUiSizeCondensed"
-			rows="{/calculated_costSet}"
 			selectionMode="None" 
+			visibleRowCountMode="Auto"
+			rows="{/calculated_costSet}"
 			ariaLabelledBy="title">
 				<extension>
 					<m:OverflowToolbar>
-						<!--<m:Title id="title" text="Products"/>-->
 						<m:ToolbarSpacer/>
-                        <m:Button icon="sap-icon://excel-attachment" press=".onExport"/>
+						<m:Button icon="sap-icon://excel-attachment" tooltip="{i18n>buttonExcel}" press="onExport"/>
 					</m:OverflowToolbar>
 				</extension>
 
@@ -361,6 +361,15 @@
 			</Table>
 
 		</f:content>
+		
+	<!-- DynamicPage Footer -->
+			<f:footer>
+				<m:OverflowToolbar class="sapUiTinyMargin">
+					<m:ToolbarSpacer/>
+					<m:Button type="Emphasized" text="{i18n>reportSavePrice}" tooltip="{i18n>reportSavePriceTip}"  press="onSavePrice"/>
+				</m:OverflowToolbar>
+			</f:footer>	
+		
 	</f:DynamicPage>		
 
 </mvc:View>

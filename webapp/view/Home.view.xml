@@ -1,7 +1,7 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="elo.co.lvl.zcostcalc.controller.Home"
 	displayBlock="true">
-	<App>
-		<pages>
+	<!--<App>-->
+		<!--<pages>-->
 			<Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding">
 				<content>
 					<VBox class="sapUiSmallMargin">
@@ -30,6 +30,6 @@
 					</VBox>
 				</content>
 			</Page>
-		</pages>
-	</App>
+		<!--</pages>-->
+	<!--</App>-->
 </mvc:View>

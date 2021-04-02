@@ -11,7 +11,13 @@ sap.ui.define([
 ], function(BaseController, ODataModel, Filter, FilterOperator, typeString, Token, exportLibrary, Spreadsheet) {
 	"use strict";
 
-	var EdmType = exportLibrary.EdmType;
+	var gaFilters = {};
+	var goData;
+	var gMsgNoRecordSaved;
+	var gMsgRecordSaved;
+	var gMsgNoRecordFound;
+	var gMsgSuccess;
+	var gMsgError;
 
 	return BaseController.extend("elo.co.lvl.zcostcalc.controller.Report", {
 
@@ -20,11 +26,11 @@ sap.ui.define([
 			this.oDataServiceUrl = "/sap/opu/odata/sap/ZCOST_CALCULATION_SRV";
 			this.oDataModel = new sap.ui.model.odata.ODataModel(this.oDataServiceUrl, true);
 			sap.ui.getCore().setModel(this.oDataModel);
+			this.getView().setModel(this.oDataModel, "MainModel");
 
 			// Search Help Matnr
 			this._oMultiInput = this.getView().byId("inputMatnr");
 			this.oColModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("elo/co/lvl/zcostcalc/model") + "/columnsModel.json");
-			// this.getView().setModel(this.oDataModel);
 
 			//FilterBar
 			this.oFilterBar = null;
@@ -47,56 +53,75 @@ sap.ui.define([
 						sortProperty: aCols[i].property,
 						autoResizable: true,
 						resizable: true,
-						width : "auto"
+						width: "auto"
 							// filterProperty: aCols[i].property  
 					}));
 				}
+				// oTable.setModel(this.oDataModel);
+				// oTable.bindRows("/calculated_costSet");
 			}
+
+			// Mensagens Globais
+			gMsgNoRecordSaved	=  this.getResourceText("noRecordSaved");
+			gMsgRecordSaved 	=  this.getResourceText("recordSaved");
+			gMsgNoRecordFound	=  this.getResourceText("noRecordFound");
+			gMsgSuccess			=  this.getResourceText("Success");
+			gMsgError			=  this.getResourceText("Error");
 
 		},
 
-		// Funcionando
+		getResourceText: function(sKey) {
+			jQuery.sap.require("jquery.sap.resources");
+			var sLocale = sap.ui.getCore().getConfiguration().getLanguage();
+			var oBundle = jQuery.sap.resources({
+				url: "i18n/i18n.properties",
+				locale: sLocale
+			});
+			return oBundle.getText(sKey);
+		},
+
 		onSearch: function(oEvent) {
 
-			// aCols = this.createColumnConfig();
-
 			// Busca o valor informado na tela
-			var filters = this.getScreenFilters();
-
-			// var pMaterial = this.getView().byId("inputMatnr").getValue();
-
-			// var filters = new Array();
-			// var filterByName = new sap.ui.model.Filter("Material", FilterOperator.EQ, pMaterial);
-			// filters.push(filterByName);
+			gaFilters = this.getScreenFilters();
 
 			// Verifica se os campos estão preenchidos
-			if (this.checkScreenFilters(filters)) {
+			if (this.checkScreenFilters(gaFilters)) {
 
-				// Chama o serviço passando  filtros
-				// var sServiceUrl = "/sap/opu/odata/sap/ZCOST_CALCULATION_SRV";
-				// var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl);
-				var that = this;
+				var oTable = this.getView().byId("__table0");
+
+				// Chama serviço com filtro
 				var oModel = sap.ui.getCore().getModel();
-				// oModel.read("/calculated_costSet", {
 				oModel.read("/calculated_costSet", {
-					filters: filters,
-					success: function(oData, oResponse) {
-						// that.getView().byId("__table0").setModel(oModel);
-						var oTable = that.getView().byId("__table0");
+					filters: gaFilters,
+					success: function(oDataRead, response) {
+
+						// Salva globalmente valores trazidos do serviço
+						goData = oDataRead;
+
+						// Atualiza dados da tabela
 						oTable.setModel(oModel);
+						oTable.getBinding("rows").filter(gaFilters);
+
+						// Atualiza largura das colunas
 						var aColumns = oTable.getColumns();
 						for (var i = 0; i < aColumns.length; i++) {
-							// oTable.autoResizeColumn(oColumns[i].getId());
-							
 							aColumns[i].setWidth("100px");
-							// oTable.autoResizeColumn(i);
 						}
 
 					},
-					error: function(oError) {}
+
+					error: function(oError) {
+						var msg = gMsgNoRecordFound + " - " + oError.response.statusText;
+						sap.m.MessageBox.show(msg, {
+							title: gMsgError
+						});
+					}
+
 				});
 
 			}
+
 		},
 
 		onClear: function(oEvent) {
@@ -115,9 +140,39 @@ sap.ui.define([
 			}
 		},
 
+		onSavePrice: function(oEvent) {
+
+			if (goData) {
+
+				//Obtêm os dados exibidos na tela
+				var oEntry = {};
+				oEntry.Material = "0001";
+				oEntry.headertoitem = goData.results;
+
+				// Obtêm os dados provindos do serviço
+				var oModel = sap.ui.getCore().getModel();
+
+				// Chama serviço criando os preços
+				oModel.create("/calculated_cost_hSet", oEntry, {
+					method: "POST",
+					success: function(oDataCreate) {
+						sap.m.MessageBox.show(gMsgRecordSaved, {
+							title: gMsgSuccess
+						});
+					},
+					error: function(err) {
+						var msg = gMsgNoRecordSaved + " - " + err.response.statusText;
+						sap.m.MessageBox.show(msg, {
+							title: gMsgError
+						});
+					}
+				});
+			}
+		},
+
 		getScreenFilters: function() {
 
-			var filters = new Array();
+			var filters = [];
 
 			var inputField = this.getView().byId("inputKlvar").getValue();
 			if (inputField) {
@@ -177,7 +232,7 @@ sap.ui.define([
 			if (!this.foundField("Plant", filterTable) ||
 				!this.foundField("Klvar", filterTable) ||
 				!this.foundField("Material", filterTable)) {
-				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("mandatoryData"));
+				sap.m.MessageBox.show(this.getView().getModel("i18n").getResourceBundle().getText("mandatoryData"));
 				return false;
 			}
 
@@ -256,7 +311,7 @@ sap.ui.define([
 		},
 
 		onSearchHelpMatnr: function() {
-			var aCols = this.oColModel.getData().cols;
+			// var aCols = this.oColModel.getData().cols;
 			this._oBasicSearchField = new sap.m.SearchField({
 				visible: false
 			});
@@ -270,7 +325,7 @@ sap.ui.define([
 				key: "Matnr",
 				type: "string",
 				typeInstance: new typeString({}, {
-					maxLength: 7
+					maxLength: 10
 				})
 			}]);
 
@@ -285,16 +340,6 @@ sap.ui.define([
 				if (oTable.bindRows) {
 					oTable.bindAggregation("rows", "/ZmatnrSet");
 				}
-
-				// if (oTable.bindItems) {
-				// 	oTable.bindAggregation("items", "/ZmatnrSet", function () {
-				// 		return new sap.m.ColumnListItem({
-				// 			cells: aCols.map(function (column) {
-				// 				return new sap.m.Label({ text: "{" + column.template + "}" });
-				// 			})
-				// 		});
-				// 	});
-				// }
 
 				this._oValueHelpDialog.update();
 			}.bind(this));
@@ -318,8 +363,7 @@ sap.ui.define([
 		},
 
 		onFilterBarSearch: function(oEvent) {
-			var sSearchQuery = this._oBasicSearchField.getValue(),
-				aSelectionSet = oEvent.getParameter("selectionSet");
+			var aSelectionSet = oEvent.getParameter("selectionSet");
 			var aFilters = aSelectionSet.reduce(function(aResult, oControl) {
 				if (oControl.getValue()) {
 					aResult.push(new Filter({
@@ -331,13 +375,6 @@ sap.ui.define([
 
 				return aResult;
 			}, []);
-
-			// aFilters.push(new Filter({
-			// 	filters: [
-			// 		new Filter({ path: "Matnr", operator: FilterOperator.Contains, value1: sSearchQuery })
-			// 	],
-			// 	and: false
-			// }));
 
 			this._filterTable(new Filter({
 				filters: aFilters,
@@ -352,10 +389,6 @@ sap.ui.define([
 				if (oTable.bindRows) {
 					oTable.getBinding("rows").filter(oFilter);
 				}
-
-				// if (oTable.bindItems) {
-				// 	oTable.getBinding("items").filter(oFilter);
-				// }
 
 				oValueHelpDialog.update();
 			});

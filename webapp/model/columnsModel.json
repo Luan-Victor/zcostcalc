@@ -1,11 +1,11 @@
 {
 	"cols": [
 		{
-			"label": "Matnr",
+			"label": "Material",
 			"template": "Matnr"
 		},
 		{
-			"label": "Maktx",
+			"label": "Descrição",
 			"template": "Maktx"
 		}
 	]
