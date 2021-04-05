@@ -32,6 +32,14 @@
 					},
 					"semanticObject": "MaterialCostEstimateRun",
 					"action": "createEdit"
+				},
+				"intent2": {
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					},
+					"semanticObject": "zcot001",
+					"action": "display"
 				}
 			}
 		}

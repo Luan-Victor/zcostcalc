@@ -40,12 +40,12 @@
     "blockPushLevel": "Error"
   },
   "build": {
-    "buildRequired": true,
+    "buildRequired": false,
     "sourceFolder": "webapp",
     "targetFolder": "dist",
     "excludedFolders": [],
     "excludedFiles": [],
-    "lastBuildDateTime": "Mon, 05 Apr 2021 17:34:36 GMT"
+    "lastBuildDateTime": "Mon, 05 Apr 2021 18:03:27 GMT"
   },
   "mockpreview": {
     "mockUri": "/sap/opu/odata/sap/ZCOST_CALCULATION_SRV",
