@@ -19,7 +19,7 @@
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
+					"localUri": "localService/ZCOST_CALCULATION_SRV/metadata.xml"
 				}
 			}
 		},
@@ -51,7 +51,12 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_belize", "sap_fiori_3", "sap_fiori_3_dark"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize",
+			"sap_fiori_3",
+			"sap_fiori_3_dark"
+		]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -70,7 +75,6 @@
 				"sap.uxap": {}
 			}
 		},
-
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
@@ -78,22 +82,23 @@
 				"viewPath": "elo.co.lvl.zcostcalc.view",
 				"targetAggregation": "pages"
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "home",
-				"view": "Home",
-				"targetAggregation": "pages",
-				"controlId": "app"
-
-			}, {
-				"pattern": "Report",
-				"name": "report",
-				"view": "Report",
-				"targetAggregation": "pages",
-				"controlId": "app"
-			}]
+			"routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"view": "Home",
+					"targetAggregation": "pages",
+					"controlId": "app"
+				},
+				{
+					"pattern": "Report",
+					"name": "report",
+					"view": "Report",
+					"targetAggregation": "pages",
+					"controlId": "app"
+				}
+			]
 		},
-
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
@@ -107,12 +112,13 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		}
 	},
-
 	"sap.platform.abap": {
 		"uri": "/sap/bc/ui5_ui5/sap/zcostcalc/webapp",
 		"_version": "1.1.0"

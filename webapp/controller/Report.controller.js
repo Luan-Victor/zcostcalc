@@ -7,8 +7,9 @@ sap.ui.define([
 	"sap/m/Token",
 	"sap/ui/export/library",
 	"sap/ui/export/Spreadsheet",
-	"sap/ui/model/FilterType"
-], function(BaseController, ODataModel, Filter, FilterOperator, typeString, Token, exportLibrary, Spreadsheet) {
+	"sap/ui/model/FilterType",
+	"sap/ui/commons/Label"
+], function(BaseController, ODataModel, Filter, FilterOperator, typeString, Token, exportLibrary, Spreadsheet, FilterType, Label) {
 	"use strict";
 
 	var gaFilters = {};
@@ -44,7 +45,7 @@ sap.ui.define([
 				for (var i = 0; i < aCols.length; i++) {
 
 					oTable.addColumn(new sap.ui.table.Column({
-						label: new sap.ui.commons.Label({
+						label: new Label({
 							text: aCols[i].label
 						}),
 						template: new sap.ui.commons.TextView({
